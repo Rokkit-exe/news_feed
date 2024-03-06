@@ -2,9 +2,9 @@ from fetch_news import fetch_news_api_v2, fetch_top_news_by_location, fetch_top_
 import os 
 import dotenv
 import json
+from datetime import datetime
 dotenv.load_dotenv()
-api_key = "33ded9223fmsh566de0a1510ddc2p18533cjsn6ff22722e6b9"
-
+api_key = os.getenv("RAPIDAPI_KEY")
 api_v2 = fetch_news_api_v2(api_key)
 if False:
     news_by_location = fetch_top_news_by_location(api_key)
@@ -13,8 +13,8 @@ if False:
     news = fetch_news(api_key)
     top_news = fetch_top_news(api_key)
 
-with open('api_v2.json', 'w') as f:
-    json.dump(api_v2, f)
+    with open('api_v2.json', 'w') as f:
+        json.dump(api_v2, f)
 
 if False:
     with open('news_by_location.json', 'w') as f:
@@ -31,3 +31,8 @@ if False:
 
     with open('top_news.json', 'w') as f:
         json.dump(top_news, f)
+
+
+date = "Fri, 01 Mar 2024 03:38:00 GMT"
+date_object = datetime.strptime(date, '%a, %d %b %Y %H:%M:%S %Z')
+print(date_object)

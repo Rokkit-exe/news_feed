@@ -1,7 +1,5 @@
 import React from "react";
 import { AppBar, Toolbar, Button, Box} from "@mui/material";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import RecentActorsIcon from "@mui/icons-material/RecentActors";
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import FeedIcon from '@mui/icons-material/Feed';
 import CableIcon from '@mui/icons-material/Cable';
@@ -9,8 +7,6 @@ import CableIcon from '@mui/icons-material/Cable';
 import SearchBar from "./search/SearchBar";
 import { Link } from "react-router-dom";
 import { useMediaQuery, useTheme } from '@mui/material';
-
-
 
 function Header() {
 
@@ -26,11 +22,11 @@ function Header() {
                 <Button component={Link} to="/news" startIcon={<FeedIcon />} sx={{ marginX: 2 }} color="inherit">
                     {!isMobile && 'Feed'}
                 </Button>
-                <Button component={Link} to="/technews" startIcon={<CableIcon />} sx={{ marginX: 2 }} color="inherit">
+                <Button component={Link} to="/news:id" startIcon={<CableIcon />} sx={{ marginX: 2 }} color="inherit">
                     {!isMobile && 'Tech News'}
                 </Button>
                 <Box sx={{ flexGrow: 1 }} />
-                <SearchBar />
+                {!isMobile && <SearchBar />}
             </Toolbar>
         </AppBar>
     );
